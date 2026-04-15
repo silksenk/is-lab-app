@@ -34,30 +34,18 @@ app.MapGet("/version", (IConfiguration config) =>
         version = appVersion
     });
 });
-app.MapGet("/db/ping", async (IConfiguration config) =>
-{
-    try
-    {
-        var connectionString = config.GetConnectionString("Mssql");
 
-        // Здесь будет код для проверки подключения к БД
-        // Пока возвращаем заглушку
-        return Results.Json(new
-        {
-            status = "not_implemented",
-            message = "Database connection not implemented yet",
-            connectionString = connectionString
-        });
-    }
-    catch (Exception ex)
+app.MapGet("/db/ping", (IConfiguration config) =>
+{
+    var connectionString = config.GetConnectionString("Mssql");
+    return Results.Json(new
     {
-        return Results.Json(new
-        {
-            status = "error",
-            message = ex.Message
-        }, statusCode: 500);
-    }
+        status = "not_implemented",
+        message = "Database connection not implemented yet",
+        connectionString = connectionString
+    });
 });
+
 app.MapControllers();
 
 app.Run();

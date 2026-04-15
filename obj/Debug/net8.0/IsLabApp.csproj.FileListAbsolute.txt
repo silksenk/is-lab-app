@@ -33,3 +33,4 @@ C:\Users\USER\Desktop\IsLabApp\obj\Debug\net8.0\refint\IsLabApp.dll
 C:\Users\USER\Desktop\IsLabApp\obj\Debug\net8.0\IsLabApp.pdb
 C:\Users\USER\Desktop\IsLabApp\obj\Debug\net8.0\IsLabApp.genruntimeconfig.cache
 C:\Users\USER\Desktop\IsLabApp\obj\Debug\net8.0\ref\IsLabApp.dll
+C:\Users\USER\Desktop\IsLabApp\obj\Debug\net8.0\IsLabApp.sourcelink.json
