@@ -1,6 +1,11 @@
 bin/
 obj/
+IsLabApp.Tests/bin/
+IsLabApp.Tests/obj/
+publish/
 *.user
 *.suo
 .DS_Store
 *.log
+*.exe
+*.dll
