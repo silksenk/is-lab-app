@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: ${SA_PASSWORD}
+    volumes:
+      - mssql_data:/var/opt/mssql
+    networks:
+      - is-network
+
+  app:
+    image: isapp:lab8
+    environment:
+      ASPNETCORE_URLS: "http://+:5000"
+      ConnectionStrings__Mssql: "Server=mssql;Database=master;User Id=sa;Password=${SA_PASSWORD};TrustServerCertificate=true"
+      App__Version: ${APP_VERSION}
+    ports:
+      - "127.0.0.1:5000:5000"
+    networks:
+      - is-network
+    depends_on:
+      - mssql
+
+volumes:
+  mssql_data:
+
+networks:
+  is-network:
