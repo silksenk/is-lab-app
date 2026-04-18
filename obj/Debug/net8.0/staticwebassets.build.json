@@ -1,1 +1,11 @@
-{"Version":1,"Hash":"r8koRPGkDZym/bpRyYSB2w3bLey+cnv7Ovh/CJ5Y+x8=","Source":"IsLabApp","BasePath":"/","Mode":"Root","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
+{
+  "Version": 1,
+  "Hash": "Yh/fFQeGp7FmhcZ6Vuq3aGXG3uXSKfnYAGP3iRJdeJs=",
+  "Source": "IsLabApp",
+  "BasePath": "_content/IsLabApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
