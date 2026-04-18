@@ -7,28 +7,24 @@ on:
       - completed
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   deploy:
-    name: Deploy to Production
-    runs-on: self-hosted
-    
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: self-hosted  # Используем runner на сервере
     
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
-          port: 22
-          
-          script: |
-            echo "=== Starting deployment ==="
-            echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USER }} --password-stdin
-            cd /home/deployer/deploy/is-stack
-            docker compose pull
-            docker compose up -d
-            docker image prune -f
-            echo "=== Deployment completed ==="
+      - name: Login to GHCR
+        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USER }} --password-stdin
+      
+      - name: Pull and restart containers
+        run: |
+          cd /home/deployer/deploy/is-stack
+          docker compose pull
+          docker compose up -d
+          docker image prune -f
+      
+      - name: Check version
+        run: |
+          sleep 5
+          curl http://localhost:5000/version
